@@ -25,12 +25,12 @@ def res_success(message: str, data=None, result=None, paging=None, status_code=2
     frappe.local.flags.write_response = True
 
 
-def res_error(message, field, code, status_code=400):
+def res_error(message, field =None, code = 400, status_code=400):
     frappe.local.response["http_status_code"] = status_code
     frappe.local.response["message"] = "Validation failed"
     frappe.local.response["errors"] = [{
         "message": message,
-        "field": field,
+        "field": field, 
         "code": code
     }]
     # frappe.local.response["meta"] = {

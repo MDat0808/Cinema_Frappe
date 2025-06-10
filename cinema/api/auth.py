@@ -11,18 +11,25 @@ def register(email, full_name, password):
     if not password:
         return res_error("Password is required", "password", "REQUIRED")
     if frappe.db.exists("User", email):
-        return res_error(_("Email is already registered."))
+        return res_error("Email is already registered.", "email", "ALREADY_EXISTS")
 
     user = frappe.new_doc("User")
     user.email = email
     user.first_name = full_name
     user.enabled = 1
-    user.send_welcome_email = 1
+    user.send_welcome_email = 0
     user.new_password = password
   
+    if not frappe.db.exists("Role", "User"):
+        role_doc = frappe.get_doc({
+            "doctype": "Role",
+            "role_name": "User"
+        })
+        role_doc.flags.ignore_permissions = True
+        role_doc.insert()
 
-    user.append("roles", {"role": "Website User"})
 
+    user.append("roles", {"role": "User"})
     user.flags.ignore_permissions = True
     user.insert()
     

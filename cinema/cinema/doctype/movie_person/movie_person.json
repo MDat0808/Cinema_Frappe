@@ -1,0 +1,75 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-06-04 22:19:47.058020",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "movie",
+  "person",
+  "role_type",
+  "person_role",
+  "role_name"
+ ],
+ "fields": [
+  {
+   "fieldname": "movie",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Movie",
+   "options": "Movie",
+   "reqd": 1
+  },
+  {
+   "fieldname": "role_type",
+   "fieldtype": "Select",
+   "label": "Role Type",
+   "options": "Ch\u00ednh\nPh\u1ee5\nVoice\nCameo\nKh\u00e1c"
+  },
+  {
+   "fieldname": "person_role",
+   "fieldtype": "Select",
+   "label": "Person Role",
+   "options": "Actor\nDirector\nWriter\nProducer\nCrew\nEditor\nCinematographer\nComposer"
+  },
+  {
+   "fieldname": "role_name",
+   "fieldtype": "Data",
+   "label": "Role Name"
+  },
+  {
+   "fieldname": "person",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Person",
+   "options": "Person",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-06-09 10:19:43.697174",
+ "modified_by": "Administrator",
+ "module": "Cinema",
+ "name": "Movie Person",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
