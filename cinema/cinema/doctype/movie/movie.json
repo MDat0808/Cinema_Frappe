@@ -10,7 +10,8 @@
   "production_company",
   "duration",
   "release_date",
-  "image",
+  "image_horizontal",
+  "image_vertical",
   "trailer",
   "is_premium",
   "overview"
@@ -40,13 +41,6 @@
    "label": "Release Date"
   },
   {
-   "fieldname": "image",
-   "fieldtype": "Attach Image",
-   "label": "Image",
-   "options": "File",
-   "reqd": 1
-  },
-  {
    "fieldname": "trailer",
    "fieldtype": "Attach",
    "label": "Trailer",
@@ -71,12 +65,26 @@
    "label": "Production Company",
    "options": "Production Company",
    "reqd": 1
+  },
+  {
+   "fieldname": "image_horizontal",
+   "fieldtype": "Attach Image",
+   "label": "Image Horizontal",
+   "options": "File",
+   "reqd": 1
+  },
+  {
+   "fieldname": "image_vertical",
+   "fieldtype": "Attach Image",
+   "label": "Image Vertical",
+   "options": "File",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-06-10 11:18:54.280244",
+ "modified": "2025-06-11 17:16:35.394728",
  "modified_by": "Administrator",
  "module": "Cinema",
  "name": "Movie",

@@ -5,7 +5,7 @@ from ..utils.avg_rating import calculate_avg_movie_rating
 @frappe.whitelist(allow_guest=True)
 def get_all_movies():
     try:
-        movies = frappe.get_all("Movie", fields=["name", "title", "image", "production_company",  "release_date", "is_premium"])
+        movies = frappe.get_all("Movie", fields=["name", "title", "image_vertical","image_horizontal","production_company",  "release_date", "is_premium"])
         
         for movie in movies:
             genres = frappe.get_all(
@@ -33,7 +33,7 @@ def get_movie_detail(title):
         movie_data = frappe.get_all(
             "Movie",
             filters={"name": movie_name},
-            fields=["name", "title", "image", "production_company", "release_date", "trailer", "overview","is_premium"]
+            fields=["name", "title", "image_vertical", "image_horizontal","production_company", "release_date", "trailer", "overview","is_premium"]
         )[0]
 
         # Genres
@@ -109,7 +109,7 @@ def get_movie_episodes(movie_id):
 @frappe.whitelist(allow_guest=True)
 def get_featured_movies(limit = 5):
     try:
-        movies = frappe.get_all("Movie", fields=["name", "title", "image", "production_company",  "release_date", "is_premium"])
+        movies = frappe.get_all("Movie", fields=["name", "title", "image_vertical", "image_horizontal",  "production_company",  "release_date", "is_premium"])
 
         for movie in movies:
             genres = frappe.get_all(
@@ -149,7 +149,7 @@ def get_featured_movies_by_genre(genre_id, limit = 10):
         movies = frappe.get_all(
             "Movie",
             filters={"name": ["in", movie_ids]},
-            fields=["name", "title", "image", "release_date"]
+            fields=["name", "title", "image_vertical", "image_horizontal","release_date"]
         )
 
         for movie in movies:
@@ -163,9 +163,11 @@ def get_featured_movies_by_genre(genre_id, limit = 10):
             movie["avg_rating"] = rating_info["average"]
             movie["total_ratings"] = rating_info["total_ratings"]
 
-
-        sorted_movies = sorted(movies, key=lambda x: x["avg_rating"], reverse=True)
-        top_movies = sorted_movies[:limit]
+        top_movies = sorted(
+            movies,
+            key=lambda m: (m.get("avg_rating") or 0, m.get("total_ratings") or 0),
+            reverse=True
+        )[:limit]
 
         return res_success("Get top rated movies by genre successfully", top_movies)
 
@@ -189,7 +191,7 @@ def get_movies_by_genre(genre_id):
         movies = frappe.get_all(
             "Movie",
             filters={"name": ["in", movie_ids]},
-            fields=["name", "title", "image", "production_company", "release_date", "trailer", "is_premium"]
+            fields=["name", "title", "image_vertical", "image_horizontal","production_company", "release_date", "trailer", "is_premium"]
         )
 
         for movie in movies:
@@ -241,7 +243,7 @@ def get_recommended_movies(current_movie_id, limit=5):
         movies = frappe.get_all(
             "Movie",
             filters={"name": ["in", top_movie_ids]},
-            fields=["name", "title", "image", "release_date", "is_premium"]
+            fields=["name", "title", "image_vertical", "image_horizontal","release_date", "is_premium"]
         )
 
         for movie in movies:
@@ -274,7 +276,7 @@ def get_movies_by_person_role(person_id: str, role: str = "Actor"):
         movies = frappe.get_all(
             "Movie",
             filters={"name": ["in", movie_ids]},
-            fields=["name", "title", "image", "release_date"]
+            fields=["name", "title", "image_vertical", "image_horizontal","release_date"]
         )
 
         for movie in movies:
@@ -302,7 +304,7 @@ def search_movies(keyword: str):
         movies = frappe.get_all(
             "Movie",
             filters={"title": ["like", f"%{keyword}%"]},
-            fields=["name", "title", "image", "release_date", "is_premium"]
+            fields=["name", "title", "image_vertical", "image_horizontal","release_date", "is_premium"]
         )
 
         people_matches = frappe.get_all(
@@ -324,7 +326,7 @@ def search_movies(keyword: str):
             additional_movies = frappe.get_all(
                 "Movie",
                 filters={"name": ["in", movie_ids]},
-                fields=["name", "title", "image", "release_date", "is_premium"]
+                fields=["name", "title", "image_vertical", "image_horizontal","release_date", "is_premium"]
             )
 
             movie_names = set(m["name"] for m in movies)

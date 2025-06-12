@@ -8,7 +8,8 @@
   "movie",
   "user",
   "rating",
-  "comment"
+  "comment",
+  "parent_rating"
  ],
  "fields": [
   {
@@ -41,12 +42,18 @@
    "in_list_view": 1,
    "label": "Comment",
    "reqd": 1
+  },
+  {
+   "fieldname": "parent_rating",
+   "fieldtype": "Link",
+   "label": "Partent rating",
+   "options": "Movie Rating"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-06-09 11:43:59.550846",
+ "modified": "2025-06-10 15:49:25.455579",
  "modified_by": "Administrator",
  "module": "Cinema",
  "name": "Movie Rating",
