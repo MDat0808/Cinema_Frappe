@@ -1,50 +1,43 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{production_name}",
- "creation": "2025-06-06 21:05:43.777377",
+ "autoname": "format:{nationality_code}",
+ "creation": "2025-06-16 15:00:08.472985",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "production_name",
-  "nationality",
-  "founded_date",
-  "logo"
+  "nationality_code",
+  "nationality_name",
+  "image"
  ],
  "fields": [
   {
-   "fieldname": "logo",
-   "fieldtype": "Attach Image",
-   "label": "Logo"
-  },
-  {
-   "fieldname": "production_name",
+   "fieldname": "nationality_code",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Name",
+   "label": "Nationality Code",
    "reqd": 1
   },
   {
-   "fieldname": "founded_date",
-   "fieldtype": "Date",
-   "label": "Founded Date"
-  },
-  {
-   "fieldname": "nationality",
-   "fieldtype": "Link",
+   "fieldname": "nationality_name",
+   "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Nationality",
-   "options": "Nationality",
+   "label": "Nationality Name",
    "reqd": 1
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-06-16 15:34:52.742418",
+ "modified": "2025-06-16 15:30:02.949170",
  "modified_by": "Administrator",
  "module": "Cinema",
- "name": "Production Company",
+ "name": "Nationality",
  "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
@@ -62,7 +55,10 @@
   }
  ],
  "row_format": "Dynamic",
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "nationality_name",
+ "translated_doctype": 1
 }

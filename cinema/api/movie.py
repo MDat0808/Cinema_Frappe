@@ -5,7 +5,7 @@ from ..utils.avg_rating import calculate_avg_movie_rating
 @frappe.whitelist(allow_guest=True)
 def get_all_movies():
     try:
-        movies = frappe.get_all("Movie", fields=["name", "title", "image_vertical","image_horizontal","production_company",  "release_date", "is_premium"])
+        movies = frappe.get_all("Movie", fields=["name", "title", "image_vertical","image_horizontal","production_company",  "nationality","release_date", "is_premium"])
         
         for movie in movies:
             genres = frappe.get_all(
@@ -20,7 +20,6 @@ def get_all_movies():
         return res_success("Get all movies successfully", movies)
     except Exception as e:
         return res_error(f"Error fetching movies: {str(e)}")
-
 
 @frappe.whitelist(allow_guest=True)
 def get_movie_detail(title):
@@ -107,7 +106,7 @@ def get_movie_episodes(movie_id):
 
 
 @frappe.whitelist(allow_guest=True)
-def get_featured_movies(limit = 5):
+def get_top_movies(limit = 5):
     try:
         movies = frappe.get_all("Movie", fields=["name", "title", "image_vertical", "image_horizontal",  "production_company",  "release_date", "is_premium"])
 
@@ -132,23 +131,58 @@ def get_featured_movies(limit = 5):
         return res_error(f"Error fetching featured movies: {str(e)}")
 
 
-
 @frappe.whitelist(allow_guest=True)
-def get_featured_movies_by_genre(genre_id, limit = 10):
+def get_top_movies_by_genre(genre_id, limit = 10):
     try:
-        movie_genre_entries = frappe.get_all(
+        filtered_movie_genres = frappe.get_all(
             "Movie Genre",
             filters={"genre": genre_id},
             fields=["parent"]
         )
-        movie_ids = [entry["parent"] for entry in movie_genre_entries]
 
+        movie_ids = list({entry["parent"] for entry in filtered_movie_genres})
         if not movie_ids:
             return res_success("No movies found for this genre", [])
 
         movies = frappe.get_all(
             "Movie",
             filters={"name": ["in", movie_ids]},
+            fields=["name", "title", "image_vertical", "image_horizontal", "release_date"]
+        )
+
+        all_movie_genres = frappe.get_all(
+            "Movie Genre",
+            filters={"parent": ["in", movie_ids]},
+            fields=["parent", "genre"]
+        )
+
+        genre_map = {}
+        for entry in all_movie_genres:
+            genre_map.setdefault(entry["parent"], []).append(entry["genre"])
+
+        for movie in movies:
+            movie["genres"] = genre_map.get(movie["name"], [])
+            rating_info = calculate_avg_movie_rating(movie["name"])
+            movie["avg_rating"] = rating_info["average"]
+            movie["total_ratings"] = rating_info["total_ratings"]
+
+        top_movies = sorted(
+            movies,
+            key=lambda m: (m.get("avg_rating") or 0, m.get("total_ratings") or 0),
+            reverse=True
+        )[:limit]
+
+        return res_success("Get top rated movies by genre successfully", top_movies)
+
+    except Exception as e:
+        return res_error(f"Error fetching featured movies: {str(e)}")
+
+@frappe.whitelist(allow_guest=True)
+def get_featured_movies_by_nationality(nationality_id, limit = 10):
+    try:
+        movies = frappe.get_all(
+            "Movie",
+            filters={"nationality": nationality_id},
             fields=["name", "title", "image_vertical", "image_horizontal","release_date"]
         )
 

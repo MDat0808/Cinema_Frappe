@@ -24,6 +24,7 @@ app_license = "mit"
 # Includes in <head>
 # ------------------
 
+
 # include js, css files in header of desk.html
 # app_include_css = "/assets/cinema/css/cinema.css"
 # app_include_js = "/assets/cinema/js/cinema.js"

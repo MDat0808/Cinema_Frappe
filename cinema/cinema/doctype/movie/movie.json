@@ -8,6 +8,7 @@
   "title",
   "movie_genre",
   "production_company",
+  "nationality",
   "duration",
   "release_date",
   "image_horizontal",
@@ -79,12 +80,19 @@
    "label": "Image Vertical",
    "options": "File",
    "reqd": 1
+  },
+  {
+   "fieldname": "nationality",
+   "fieldtype": "Link",
+   "label": "Nationality",
+   "options": "Nationality",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-06-11 17:16:35.394728",
+ "modified": "2025-06-16 15:37:36.166092",
  "modified_by": "Administrator",
  "module": "Cinema",
  "name": "Movie",

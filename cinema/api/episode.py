@@ -59,3 +59,7 @@ def user_has_access(user: str, episode: str) -> bool:
     except Exception as e:
         frappe.log_error(str(e), "Error in user_has_access")
         return False
+    
+
+
+        
