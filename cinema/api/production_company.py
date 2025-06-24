@@ -7,7 +7,7 @@ def get_all_production():
     try:
         production = frappe.get_all(
                     "Production Company",
-                    fields=["name", "production_name", "logo", "country", "founded_date"],
+                    fields=["name", "production_name", "logo", "nationality", "founded_date"],
                 )
         res_success("Get all production company successfully", production)
     except Exception as e:

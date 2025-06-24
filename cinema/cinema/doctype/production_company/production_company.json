@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "format:{production_name}",
  "creation": "2025-06-06 21:05:43.777377",
@@ -41,7 +42,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-06-16 15:34:52.742418",
+ "modified": "2025-06-24 04:49:36.893275",
  "modified_by": "Administrator",
  "module": "Cinema",
  "name": "Production Company",

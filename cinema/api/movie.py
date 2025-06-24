@@ -5,7 +5,7 @@ from ..utils.avg_rating import calculate_avg_movie_rating
 @frappe.whitelist(allow_guest=True)
 def get_all_movies():
     try:
-        movies = frappe.get_all("Movie", fields=["name", "title", "image_vertical","image_horizontal","production_company",  "nationality","release_date", "is_premium"])
+        movies = frappe.get_all("Movie", fields=["name","trailer", "title", "image_vertical","image_horizontal","production_company",  "nationality","release_date", "is_premium"])
         
         for movie in movies:
             genres = frappe.get_all(
@@ -108,7 +108,8 @@ def get_movie_episodes(movie_id):
 @frappe.whitelist(allow_guest=True)
 def get_top_movies(limit = 5):
     try:
-        movies = frappe.get_all("Movie", fields=["name", "title", "image_vertical", "image_horizontal",  "production_company",  "release_date", "is_premium"])
+        limit = int(limit) if limit else 5
+        movies = frappe.get_all("Movie", fields=["name", "trailer","title", "image_vertical", "image_horizontal",  "production_company",  "release_date", "is_premium"])
 
         for movie in movies:
             genres = frappe.get_all(
