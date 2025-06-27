@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "format:{nationality_code}",
  "creation": "2025-06-16 15:00:08.472985",
@@ -34,7 +35,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-06-16 15:30:02.949170",
+ "modified": "2025-06-24 04:44:48.347548",
  "modified_by": "Administrator",
  "module": "Cinema",
  "name": "Nationality",

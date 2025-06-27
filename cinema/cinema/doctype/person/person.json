@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "creation": "2025-06-04 22:12:42.632716",
  "doctype": "DocType",
@@ -68,7 +69,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-06-16 15:29:31.750796",
+ "modified": "2025-06-24 04:46:14.058484",
  "modified_by": "Administrator",
  "module": "Cinema",
  "name": "Person",
