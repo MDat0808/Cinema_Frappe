@@ -43,6 +43,7 @@ def get_movie_detail(title):
         )
         movie_data["genres"] = [g["genre"] for g in genres]
 
+
         # People (cast & crew)
         people_links = frappe.get_all(
             "Movie Person",

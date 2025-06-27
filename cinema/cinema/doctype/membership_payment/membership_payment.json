@@ -1,15 +1,17 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2025-06-04 22:48:48.958233",
+ "creation": "2025-06-23 09:04:04.862842",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "user",
-  "membership_plan",
-  "start_date",
-  "end_date",
-  "is_active"
+  "membership_subscription",
+  "amount",
+  "status",
+  "transaction_id",
+  "payment_id",
+  "payment_at"
  ],
  "fields": [
   {
@@ -21,41 +23,47 @@
    "reqd": 1
   },
   {
-   "fieldname": "membership_plan",
+   "fieldname": "membership_subscription",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Membership Plan",
-   "options": "Membership Plan",
+   "label": "Membership Subscription",
+   "options": "User Membership",
    "reqd": 1
   },
   {
-   "fieldname": "start_date",
-   "fieldtype": "Datetime",
-   "in_list_view": 1,
-   "label": "Start Date",
-   "read_only": 1
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount"
   },
   {
-   "fieldname": "end_date",
-   "fieldtype": "Datetime",
-   "in_list_view": 1,
-   "label": "End Date",
-   "read_only": 1
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nPending\nPaid\nFailed"
   },
   {
-   "default": "0",
-   "fieldname": "is_active",
-   "fieldtype": "Check",
-   "label": "Is Active"
+   "fieldname": "transaction_id",
+   "fieldtype": "Data",
+   "label": "Transaction Id"
+  },
+  {
+   "fieldname": "payment_id",
+   "fieldtype": "Data",
+   "label": "Payment Id"
+  },
+  {
+   "fieldname": "payment_at",
+   "fieldtype": "Datetime",
+   "label": "Payment At"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-06-24 13:43:43.538372",
+ "modified": "2025-06-24 17:09:06.795658",
  "modified_by": "Administrator",
  "module": "Cinema",
- "name": "User Membership",
+ "name": "Membership Payment",
  "owner": "Administrator",
  "permissions": [
   {

@@ -44,7 +44,7 @@ def user_has_access(user: str, episode: str) -> bool:
             return True
         
         membership = frappe.get_all(
-            "Membership",
+            "User Membership",
             filters={
                 "user": user,
                 "is_active": 1,  
@@ -53,7 +53,6 @@ def user_has_access(user: str, episode: str) -> bool:
             },
             limit_page_length=1
         )
-
         return bool(membership)
 
     except Exception as e:
