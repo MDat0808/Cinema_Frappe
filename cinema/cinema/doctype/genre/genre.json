@@ -9,7 +9,8 @@
  "field_order": [
   "genre_name",
   "genre_code",
-  "description"
+  "description",
+  "age"
  ],
  "fields": [
   {
@@ -30,12 +31,18 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Genre Code"
+  },
+  {
+   "fieldname": "age",
+   "fieldtype": "Link",
+   "label": "Age",
+   "options": "Age"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-06-24 04:43:37.034620",
+ "modified": "2025-06-27 08:48:56.305948",
  "modified_by": "Administrator",
  "module": "Cinema",
  "name": "Genre",

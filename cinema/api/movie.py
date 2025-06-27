@@ -5,7 +5,7 @@ from ..utils.avg_rating import calculate_avg_movie_rating
 @frappe.whitelist(allow_guest=True)
 def get_all_movies():
     try:
-        movies = frappe.get_all("Movie", fields=["name","trailer", "title", "image_vertical","image_horizontal","production_company",  "nationality","release_date", "is_premium"])
+        movies = frappe.get_all("Movie", fields=["age_limit","name","trailer", "title", "image_vertical","image_horizontal","production_company",  "nationality","release_date", "is_premium"])
         
         for movie in movies:
             genres = frappe.get_all(
@@ -22,9 +22,15 @@ def get_all_movies():
         return res_error(f"Error fetching movies: {str(e)}")
 
 @frappe.whitelist(allow_guest=True)
-def get_movie_detail(title):
+def get_movie_detail(title=None, name=None, movie=None):
     try:
-        movie_name = frappe.get_value("Movie", {"title": title}, "name")
+        # Ưu tiên lấy id (name) nếu có
+        movie_name = name or movie
+
+        # Nếu chưa có id, thì tìm theo title
+        if not movie_name and title:
+            movie_name = frappe.get_value("Movie", {"title": title}, "name")
+
         if not movie_name:
             return res_error("Movie not found")
 
@@ -32,8 +38,12 @@ def get_movie_detail(title):
         movie_data = frappe.get_all(
             "Movie",
             filters={"name": movie_name},
-            fields=["name", "title", "image_vertical", "image_horizontal","production_company", "release_date", "trailer", "overview","is_premium"]
-        )[0]
+            fields=["age_limit","name", "title", "image_vertical", "image_horizontal",
+                    "production_company", "release_date", "trailer", "overview", "is_premium","duration"]
+        )
+        if not movie_data:
+            return res_error("Movie not found")
+        movie_data = movie_data[0]
 
         # Genres
         genres = frappe.get_all(
@@ -50,9 +60,7 @@ def get_movie_detail(title):
             fields=["person", "role_name", "role_type", "person_role"]
         )
 
-        actors = []
-        directors = []
-        producers = []
+        actors, directors, producers = [], [], []
 
         for link in people_links:
             person = frappe.get_doc("Person", link["person"])
@@ -97,7 +105,9 @@ def get_movie_episodes(movie_id):
                 "duration",
                 "release_date",
                 "video_url",
-                "is_premium"
+                "is_premium",
+                "image",
+                "description"
             ]
         )
         return res_success("Get movie episodes successfully", episodes)
@@ -109,7 +119,7 @@ def get_movie_episodes(movie_id):
 def get_top_movies(limit = 5):
     try:
         limit = int(limit) if limit else 5
-        movies = frappe.get_all("Movie", fields=["name", "trailer","title", "image_vertical", "image_horizontal",  "production_company",  "release_date", "is_premium"])
+        movies = frappe.get_all("Movie", fields=["age_limit","name", "trailer","title", "image_vertical", "image_horizontal",  "production_company",  "release_date", "is_premium"])
 
         for movie in movies:
             genres = frappe.get_all(

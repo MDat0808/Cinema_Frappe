@@ -1,13 +1,13 @@
 import frappe
 from .response import res_error, res_success
 
-@frappe.whitelist(allow_guest=False)  
+@frappe.whitelist(allow_guest=True)  
 def get_episode_detail(episode_id):
     try:
         episode = frappe.get_all(
             "Episode",
             filters={"name": episode_id},
-            fields=["name", "episode_name", "episode_number", "duration", "release_date", "video_url", "is_premium"]
+            fields=["name", "episode_name", "episode_number", "duration", "release_date", "video_url", "is_premium","image","description"],
         )[0]
         if not episode:
             return res_error("Episode not found")
@@ -30,7 +30,7 @@ def get_episodes_by_movie(movie_id):
         episodes = frappe.get_all(
             "Episode",
             filters={"movie": movie_id},
-            fields=["name", "episode_name", "episode_number", "duration", "release_date", "is_premium"]
+            fields=["name", "episode_name", "episode_number", "duration", "release_date", "is_premium","image","description"]
         )
         return res_success("Get episodes successfully", episodes)
     except Exception as e:

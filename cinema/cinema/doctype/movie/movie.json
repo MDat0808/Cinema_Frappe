@@ -16,7 +16,8 @@
   "image_vertical",
   "trailer",
   "is_premium",
-  "overview"
+  "overview",
+  "age_limit"
  ],
  "fields": [
   {
@@ -88,12 +89,17 @@
    "label": "Nationality",
    "options": "Nationality",
    "reqd": 1
+  },
+  {
+   "fieldname": "age_limit",
+   "fieldtype": "Int",
+   "label": "Age Limit"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-06-24 04:52:24.228389",
+ "modified": "2025-06-27 08:56:02.878853",
  "modified_by": "Administrator",
  "module": "Cinema",
  "name": "Movie",
