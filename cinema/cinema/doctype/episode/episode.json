@@ -1,0 +1,105 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "creation": "2025-06-04 22:39:07.543669",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "movie",
+  "episode_name",
+  "episode_number",
+  "duration",
+  "release_date",
+  "video_url",
+  "is_premium",
+  "image",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "movie",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Movie",
+   "options": "Movie",
+   "reqd": 1
+  },
+  {
+   "fieldname": "episode_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Episode Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "episode_number",
+   "fieldtype": "Int",
+   "label": "Episode Number",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "duration",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Duration",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "release_date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Release Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "video_url",
+   "fieldtype": "Attach",
+   "label": "Video Url",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_premium",
+   "fieldtype": "Check",
+   "label": "Is Premium"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "label": "Description"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-06-27 07:49:30.965120",
+ "modified_by": "Administrator",
+ "module": "Cinema",
+ "name": "Episode",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

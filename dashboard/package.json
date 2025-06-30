@@ -1,0 +1,22 @@
+{
+  "name": "dashboard",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --base=/assets/cinema/dashboard/ && yarn copy-html-entry",
+    "preview": "vite preview",
+    "copy-html-entry": "cp ../cinema/public/dashboard/index.html ../cinema/www/dashboard.html"
+  },
+  "dependencies": {
+    "echarts": "^5.6.0",
+    "socket.io-client": "^4.5.1",
+    "vue": "^3.5.13",
+    "vue-router": "^4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.3",
+    "vite": "^6.3.5"
+  }
+}

@@ -1,0 +1,128 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "creation": "2025-06-04 21:52:02.985663",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "movie_genre",
+  "production_company",
+  "nationality",
+  "duration",
+  "release_date",
+  "image_horizontal",
+  "image_vertical",
+  "trailer",
+  "is_premium",
+  "overview",
+  "age_limit"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "movie_genre",
+   "fieldtype": "Table",
+   "label": "Movie Genre",
+   "options": "Movie Genre"
+  },
+  {
+   "fieldname": "duration",
+   "fieldtype": "Int",
+   "label": "Duration"
+  },
+  {
+   "fieldname": "release_date",
+   "fieldtype": "Datetime",
+   "label": "Release Date"
+  },
+  {
+   "fieldname": "trailer",
+   "fieldtype": "Attach",
+   "label": "Trailer",
+   "options": "File",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_premium",
+   "fieldtype": "Check",
+   "label": "Is Premium"
+  },
+  {
+   "fieldname": "overview",
+   "fieldtype": "Text",
+   "label": "Overview",
+   "reqd": 1
+  },
+  {
+   "fieldname": "production_company",
+   "fieldtype": "Link",
+   "label": "Production Company",
+   "options": "Production Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "image_horizontal",
+   "fieldtype": "Attach Image",
+   "label": "Image Horizontal",
+   "options": "File",
+   "reqd": 1
+  },
+  {
+   "fieldname": "image_vertical",
+   "fieldtype": "Attach Image",
+   "label": "Image Vertical",
+   "options": "File",
+   "reqd": 1
+  },
+  {
+   "fieldname": "nationality",
+   "fieldtype": "Link",
+   "label": "Nationality",
+   "options": "Nationality",
+   "reqd": 1
+  },
+  {
+   "fieldname": "age_limit",
+   "fieldtype": "Int",
+   "label": "Age Limit"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-06-27 08:56:02.878853",
+ "modified_by": "Administrator",
+ "module": "Cinema",
+ "name": "Movie",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title",
+ "translated_doctype": 1
+}
