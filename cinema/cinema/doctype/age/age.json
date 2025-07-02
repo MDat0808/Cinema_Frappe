@@ -1,40 +1,42 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2025-06-04 21:59:42.813044",
+ "creation": "2025-06-27 21:04:12.937465",
  "doctype": "DocType",
- "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "genre",
-  "priority"
+  "age_limit"
  ],
  "fields": [
   {
-   "fieldname": "genre",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Genre",
-   "options": "Genre",
-   "reqd": 1
-  },
-  {
-   "fieldname": "priority",
+   "fieldname": "age_limit",
    "fieldtype": "Int",
-   "label": "Priority",
+   "label": "Age Limit",
    "non_negative": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
- "istable": 1,
  "links": [],
- "modified": "2025-06-27 21:40:31.840527",
+ "modified": "2025-06-27 21:53:45.478790",
  "modified_by": "Administrator",
  "module": "Cinema",
- "name": "Movie Genre",
+ "name": "Age",
  "owner": "Administrator",
- "permissions": [],
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
  "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",

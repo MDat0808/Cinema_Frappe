@@ -23,3 +23,4 @@ def get_logged_user_info_custom():
 
     except Exception as e:
         return res_error("Get profile user error","server_error",500)
+

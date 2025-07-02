@@ -12,7 +12,8 @@
   "duration",
   "release_date",
   "video_url",
-  "is_premium"
+  "is_premium",
+  "image"
  ],
  "fields": [
   {
@@ -62,12 +63,17 @@
    "fieldname": "is_premium",
    "fieldtype": "Check",
    "label": "Is Premium"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-06-24 04:53:20.759634",
+ "modified": "2025-06-27 21:20:57.519836",
  "modified_by": "Administrator",
  "module": "Cinema",
  "name": "Episode",
